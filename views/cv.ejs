@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV | <%= data.fullName %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <img src="https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/1183px-FC_Barcelona_%28crest%29.svg.png" alt="Ảnh đại diện" class="avatar">
+            <div class="header-info">
+                <h1><%= data.fullName %></h1>
+                <h2><%= data.jobTitle %></h2>
+                <div class="contact">
+                    <p>📧 "22t1020223@husc.edu.vn" </p>
+                    <p>🐱 <a href="https://github.com/22t1020223-tech" target="_blank">GitHub</a></p>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="section">
+                <h3>📝 Tóm Tắt</h3>
+                <p><%= data.summary %></p>
+            </section>
+
+            <section class="section">
+                <h3>💻 Kỹ Năng</h3>
+                <div class="skills">
+                    <% data.skills.forEach(skill => { %>
+                        <div class="skill-item">
+                            <span><%= skill.name %></span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: <%= skill.level %>%;"></div>
+                            </div>
+                        </div>
+                    <% }) %>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>🏢 Kinh Nghiệm Làm Việc</h3>
+                <% data.experience.forEach(job => { %>
+                    <div class="job">
+                        <h4><%= job.position %> <span class="company">@ <%= job.company %></span></h4>
+                        <p class="time"><%= job.time %></p>
+                        <p><%= job.description %></p>
+                    </div>
+                <% }) %>
+            </section>
+
+            <section class="section">
+                <h3>🎓 Học Vấn</h3>
+                <h4><%= data.education.school %></h4>
+                <p><%= data.education.major %> (<%= data.education.time %>)</p>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
